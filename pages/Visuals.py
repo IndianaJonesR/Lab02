@@ -19,7 +19,7 @@ if not JSON_PATH.exists():
             "Weekday Heavy": {"Mon": 3, "Tue": 3, "Wed": 3, "Thu": 3, "Fri": 3, "Sat": 1, "Sun": 1},
             "Weekend Warrior": {"Mon": 1, "Tue": 1, "Wed": 1, "Thu": 1, "Fri": 1, "Sat": 4, "Sun": 4}
         },
-        "note": "Feel free to edit this JSON file with your own weekly targets."
+        
     }
     JSON_PATH.write_text(json.dumps(default_payload, indent=2))
 
@@ -68,17 +68,15 @@ if not df_filtered.empty:
 
 
 st.subheader("Graph 1 (Dynamic): Study Hours Over Time")
-st.caption("Uses `data.csv`. Controlled by sidebar filters stored in **st.session_state**.")
+
 if df_filtered.empty:
     st.info("No data to show yet. Add entries on the Survey page.")
 else:
     line_df = df_filtered.sort_values("date").set_index("date")[["hours"]]
     st.line_chart(line_df)
-    st.markdown("**Description:** This line chart shows how many hours you studied each day within the selected date range. Adjust filters in the sidebar to interact with the graph.")
-
+    
 
 st.subheader("Graph 2 (Static): Average Hours by Weekday")
-st.caption("Uses `data.csv`.")
 if df.empty:
     st.info("Need some data first.")
 else:
@@ -91,12 +89,9 @@ else:
     avg_by_day = avg_by_day.sort_values("weekday")
     chart_df = avg_by_day.set_index("weekday")
     st.bar_chart(chart_df)
-    st.markdown("**Description:** This bar chart summarizes your average daily study time by weekday. It is **static** (no interactive controls).")
-
+    
 
 st.subheader("Graph 3 (Dynamic): Weekly Targets vs Actuals")
-st.caption("Reads targets from `data.json` and actuals from `data.csv`. Target plan selection is stored in **st.session_state**.")
-
 plans = targets.get("plans", {})
 if not plans:
     st.warning("No plans found in data.json. Add a 'plans' object with weekday targets.")
@@ -125,6 +120,6 @@ else:
         st.dataframe(compare)
 
         st.bar_chart(compare)
-        st.markdown(f"**Description:** This grouped bar chart compares your **actual** weekly total hours vs your **'{chosen}'** JSON plan targets. Change the plan in the sidebar to interact.")
+       
 
 st.markdown("---")

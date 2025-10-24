@@ -1,0 +1,32 @@
+{
+  "plans": {
+    "Balanced": {
+      "Mon": 2,
+      "Tue": 2,
+      "Wed": 2,
+      "Thu": 2,
+      "Fri": 2,
+      "Sat": 2,
+      "Sun": 2
+    },
+    "Weekday Heavy": {
+      "Mon": 3,
+      "Tue": 3,
+      "Wed": 3,
+      "Thu": 3,
+      "Fri": 3,
+      "Sat": 1,
+      "Sun": 1
+    },
+    "Weekend Warrior": {
+      "Mon": 1,
+      "Tue": 1,
+      "Wed": 1,
+      "Thu": 1,
+      "Fri": 1,
+      "Sat": 4,
+      "Sun": 4
+    }
+  },
+  "note": "Feel free to edit this JSON file with your own weekly targets."
+}

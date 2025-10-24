@@ -44,7 +44,7 @@ if st.session_state.pending_entries:
 st.subheader("All Logged Study Hours (data.csv)")
 try:
     df_all = pd.read_csv(DATA_PATH)
-    # Make sure date column is displayed nicely
+
     if not df_all.empty:
         df_all["date"] = pd.to_datetime(df_all["date"]).dt.date
     st.dataframe(df_all)
